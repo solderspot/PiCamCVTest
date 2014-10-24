@@ -5,7 +5,7 @@
 #include <opencv/cv.hpp>
 
 
-float minTargetRadius = ((float)MAIN_TEXTURE_WIDTH)*0.05;
+float minTargetRadiusFactor = 0.05;
 bool do_thresholding = true;
 int cap_width =  320;
 int cap_height = 320;
@@ -64,6 +64,7 @@ int main(int argc, const char **argv)
 					cv::findContours( frame.clone(), contours, heirarchy, CV_RETR_TREE, CV_CHAIN_APPROX_NONE);
 			
 					size_t count = contours.size();
+					float minR = ((float)cap_width)*minTargetRadiusFactor;
 					
 					for( int i=0; i<count; i++)
 					{
@@ -71,7 +72,7 @@ int main(int argc, const char **argv)
 						float r;
 						cv::minEnclosingCircle( contours[i], c, r);
 						
-						if ( r >= minTargetRadius)
+						if ( r >= minR)
 						{
 							center.push_back(c);
 							radius.push_back(r);
