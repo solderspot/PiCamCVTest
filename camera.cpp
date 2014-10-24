@@ -15,7 +15,7 @@ http://raufast.org/download/camcv_vid0.c to get the camera feeding into opencv. 
 
 static CCamera* GCamera = NULL;
 
-CCamera* StartCamera(int width, int height, int framerate, int num_levels, bool do_argb_conversion)
+CCamera* StartCamera(int width, int height, int framerate, int num_levels, bool do_argb_conversion, int awbmode, int flipx, int flipy)
 {
 	//can't create more than one camera
 	if(GCamera != NULL)
@@ -26,7 +26,7 @@ CCamera* StartCamera(int width, int height, int framerate, int num_levels, bool 
 
 	//create and attempt to initialize the camera
 	GCamera = new CCamera();
-	if(!GCamera->Init(width,height,framerate,num_levels,do_argb_conversion))
+	if(!GCamera->Init(width,height,framerate,num_levels,do_argb_conversion, awbmode, flipx, flipy))
 	{
 		//failed so clean up
 		printf("Camera init failed\n");
@@ -248,7 +248,7 @@ error:
 	return NULL;
 }
 
-bool CCamera::Init(int width, int height, int framerate, int num_levels, bool do_argb_conversion, int awbmode, int flipx, int flipy)
+bool CCamera::Init(int width, int height, int framerate, int num_levels, bool do_argb_conversion, int awbmode, int flipv, int fliph)
 {
 	//init broadcom host - QUESTION: can this be called more than once??
 	bcm_host_init();
@@ -260,6 +260,10 @@ bool CCamera::Init(int width, int height, int framerate, int num_levels, bool do
 
 	// Set up the camera_parameters to default
 	raspicamcontrol_set_defaults(&CameraParameters);
+
+	CameraParameters.awbMode = awbmode;
+	CameraParameters.hflip = fliph;
+	CameraParameters.vflip = flipv;
 
 	MMAL_COMPONENT_T *camera = 0;
 	MMAL_COMPONENT_T *splitter = 0;

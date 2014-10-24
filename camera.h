@@ -43,7 +43,7 @@ private:
 	CCamera();
 	~CCamera();
 
-	bool Init(int width, int height, int framerate, int num_levels, bool do_argb_conversion, int awbmode = 1, int flipx = 0, int flipy = 0);
+	bool Init(int width, int height, int framerate, int num_levels, bool do_argb_conversion, int awbmode = 1, int flipv = 0, int fliph = 0);
 	void Release();
 	MMAL_COMPONENT_T* CreateCameraComponentAndSetupPorts();
 	MMAL_COMPONENT_T* CreateSplitterComponentAndSetupPorts(MMAL_PORT_T* video_ouput_port);
@@ -64,5 +64,5 @@ private:
 	friend void StopCamera();
 };
 
-CCamera* StartCamera(int width, int height, int framerate, int num_levels, bool do_argb_conversion=true);
+CCamera* StartCamera(int width, int height, int framerate, int num_levels, bool do_argb_conversion=true, int awbmode = 1, int flipv = 0, int fliph = 0);
 void StopCamera();

@@ -21,7 +21,7 @@ int main(int argc, const char **argv)
 	}
 	//init graphics and the camera
 	InitGraphics();
-	CCamera* cam = StartCamera(cap_width, cap_height, 30, 1, true);
+	CCamera* cam = StartCamera(cap_width, cap_height, 30, 1, true );
 
     GfxTexture texture;
 	texture.Create(cap_width, cap_height);
