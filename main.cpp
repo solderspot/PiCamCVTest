@@ -5,10 +5,8 @@
 #include <opencv/cv.hpp>
 
 
-char tmpbuff[MAIN_TEXTURE_WIDTH*MAIN_TEXTURE_HEIGHT*4];
-
 float minTargetRadius = ((float)MAIN_TEXTURE_WIDTH)*0.05;
-bool do_thresholding = false;
+bool do_thresholding = true;
 int cap_width =  320;
 int cap_height = 320;
 
@@ -17,6 +15,10 @@ using namespace std;
 int main(int argc, const char **argv)
 {
 
+	if (argc > 1 )
+	{
+		do_thresholding = false;
+	}
 	//init graphics and the camera
 	InitGraphics();
 	CCamera* cam = StartCamera(cap_width, cap_height, 30, 1, true);
