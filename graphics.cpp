@@ -12,8 +12,8 @@
 #define check() assert(glGetError() == 0)
 
 
-static frag_src = "varying vec2 tcoord; uniform sampler2D tex; void main(void) { gl_FragColor = texture2D(tex,tcoord); }";
-static vertex_src = "attribute vec4 vertex; uniform vec2 offset; uniform vec2 scale; varying vec2 tcoord; void main(void)  { vec4 pos = vertex; tcoord.xy = pos.xy; pos.xy = pos.xy*scale+offset; gl_Position = pos; }";
+static const char *frag_src = "varying vec2 tcoord; uniform sampler2D tex; void main(void) { gl_FragColor = texture2D(tex,tcoord); }";
+static const char *vertex_src = "attribute vec4 vertex; uniform vec2 offset; uniform vec2 scale; varying vec2 tcoord; void main(void)  { vec4 pos = vertex; tcoord.xy = pos.xy; pos.xy = pos.xy*scale+offset; gl_Position = pos; }";
 uint32_t GScreenWidth;
 uint32_t GScreenHeight;
 EGLDisplay GDisplay;
