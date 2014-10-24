@@ -15,7 +15,7 @@ http://raufast.org/download/camcv_vid0.c to get the camera feeding into opencv. 
 
 static CCamera* GCamera = NULL;
 
-CCamera* StartCamera(int width, int height, int framerate, int num_levels, bool do_argb_conversion, int awbmode, int flipx, int flipy)
+CCamera* StartCamera(int width, int height, int framerate, int num_levels, bool do_argb_conversion, int awbmode, int flipv, int fliph)
 {
 	//can't create more than one camera
 	if(GCamera != NULL)
@@ -26,7 +26,7 @@ CCamera* StartCamera(int width, int height, int framerate, int num_levels, bool 
 
 	//create and attempt to initialize the camera
 	GCamera = new CCamera();
-	if(!GCamera->Init(width,height,framerate,num_levels,do_argb_conversion, awbmode, flipx, flipy))
+	if(!GCamera->Init(width,height,framerate,num_levels,do_argb_conversion, awbmode, flipv, fliph))
 	{
 		//failed so clean up
 		printf("Camera init failed\n");

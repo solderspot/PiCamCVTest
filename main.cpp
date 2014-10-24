@@ -9,6 +9,9 @@ float minTargetRadiusFactor = 0.05;
 bool do_thresholding = true;
 int cap_width =  320;
 int cap_height = 320;
+int flipv = 0;
+int fliph = 0;
+int awbmode = 1;
 
 using namespace std;
 
@@ -21,7 +24,7 @@ int main(int argc, const char **argv)
 	}
 	//init graphics and the camera
 	InitGraphics();
-	CCamera* cam = StartCamera(cap_width, cap_height, 30, 1, true );
+	CCamera* cam = StartCamera(cap_width, cap_height, 30, 1, true, awbmode, flipv, fliph );
 
     GfxTexture texture;
 	texture.Create(cap_width, cap_height);
@@ -38,7 +41,7 @@ int main(int argc, const char **argv)
 		if(cam->BeginReadFrame(0,frame_data,frame_sz))
 		{
 			//if doing argb conversion the frame data will be exactly the right size so just set directly
-			frame = cv::Mat(cap_width, MAIN_TEXTURE_WIDTHcap_height, CV_8UC4, (void*)frame_data);
+			frame = cv::Mat(cap_width, cap_height, CV_8UC4, (void*)frame_data);
 			if (do_thresholding)
 			{
 				cv::cvtColor(frame, frame, CV_RGB2HSV); 
