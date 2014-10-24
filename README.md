@@ -64,6 +64,6 @@ Then build:
 
 And run:
 
-	$ ./PiCamObjDetect 
+	$ ./pidetect 
 
 
