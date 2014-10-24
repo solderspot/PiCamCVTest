@@ -141,8 +141,8 @@ MMAL_COMPONENT_T* CCamera::CreateCameraComponentAndSetupPorts()
 
 	//setup video port format
 	format = video_port->format;
-	format->encoding = MMAL_ENCODING_I420;
-	format->encoding_variant = MMAL_ENCODING_I420;
+	format->encoding = MMAL_ENCODING_RGBA;
+	format->encoding_variant = MMAL_ENCODING_RGBA;
 	format->es->video.width = Width;
 	format->es->video.height = Height;
 	format->es->video.crop.x = 0;
@@ -304,7 +304,7 @@ bool CCamera::Init(int width, int height, int framerate, int num_levels, bool do
 	for(int i = 0; i < num_levels; i++)
 	{
 		outputs[i] = new CCameraOutput();
-		if(!outputs[i]->Init(Width >> i,Height >> i,splitter,i,do_argb_conversion))
+		if(!outputs[i]->Init(Width >> i,Height >> i,splitter,i, false /*do_argb_conversion*/))
 		{
 			printf("Failed to initialize output %d\n",i);
 			goto error;
