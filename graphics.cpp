@@ -231,10 +231,6 @@ bool GfxShader::LoadFragmentShader(const char* src)
 		glDeleteShader(Id);
 		return false;
 	}
-	else
-	{
-		printf("Compiled fragment shader %s:\n%s\n", filename, src);
-	}
 
 	return true;
 }
