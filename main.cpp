@@ -5,26 +5,24 @@
 #include <opencv/cv.hpp>
 
 
-#define MAIN_TEXTURE_WIDTH 320
-#define MAIN_TEXTURE_HEIGHT 320
-
 char tmpbuff[MAIN_TEXTURE_WIDTH*MAIN_TEXTURE_HEIGHT*4];
 
 float minTargetRadius = ((float)MAIN_TEXTURE_WIDTH)*0.05;
-bool do_thresholding = true;
+bool do_thresholding = false;
+int cap_width =  320;
+int cap_height = 320;
 
 using namespace std;
 
-//entry point
 int main(int argc, const char **argv)
 {
 
 	//init graphics and the camera
 	InitGraphics();
-	CCamera* cam = StartCamera(MAIN_TEXTURE_WIDTH, MAIN_TEXTURE_HEIGHT,30, 1, true);
+	CCamera* cam = StartCamera(cap_width, cap_height, 30, 1, true);
 
     GfxTexture texture;
-	texture.Create(MAIN_TEXTURE_WIDTH, MAIN_TEXTURE_HEIGHT);
+	texture.Create(cap_width, cap_height);
 
 
 	cv::Mat frame;
@@ -38,7 +36,7 @@ int main(int argc, const char **argv)
 		if(cam->BeginReadFrame(0,frame_data,frame_sz))
 		{
 			//if doing argb conversion the frame data will be exactly the right size so just set directly
-			frame = cv::Mat(MAIN_TEXTURE_HEIGHT, MAIN_TEXTURE_WIDTH, CV_8UC4, (void*)frame_data);
+			frame = cv::Mat(cap_width, MAIN_TEXTURE_WIDTHcap_height, CV_8UC4, (void*)frame_data);
 			if (do_thresholding)
 			{
 				cv::cvtColor(frame, frame, CV_RGB2HSV); 
@@ -98,7 +96,7 @@ int main(int argc, const char **argv)
 		//begin frame, draw the texture then end frame (the bit of maths just fits the image to the screen while maintaining aspect ratio)
 		BeginFrame();
 		texture.SetPixels(frame.data);
-		float aspect_ratio = float(MAIN_TEXTURE_WIDTH)/float(MAIN_TEXTURE_HEIGHT);
+		float aspect_ratio = float(cap_width)/float(cap_height);
 		float screen_aspect_ratio = 1280.f/720.f;
 		DrawTextureRect(&texture,-aspect_ratio/screen_aspect_ratio,-1.f,aspect_ratio/screen_aspect_ratio,1.f);
 		EndFrame();

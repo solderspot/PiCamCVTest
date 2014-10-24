@@ -64,6 +64,12 @@ Then build:
 
 And run:
 
-	$ ./pidetect 
+	$ ./pidetect
+	
+The demo does not parse command line arguments. You must modify the code, rebuild and run. Might add args at a later date.
+
+Press ctrl-c to exit the frame loop. 
+	
+ 
 
 
