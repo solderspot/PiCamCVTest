@@ -20,8 +20,8 @@ public:
 	GfxShader() : Src(NULL), Id(0), GlShaderType(0) {}
 	~GfxShader() { if(Src) delete[] Src; }
 
-	bool LoadVertexShader(const char* filename);
-	bool LoadFragmentShader(const char* filename);
+	bool LoadVertexShader(const char* code);
+	bool LoadFragmentShader(const char* code);
 	GLuint GetId() { return Id; }
 };
 
