@@ -261,7 +261,7 @@ bool CCamera::Init(int width, int height, int framerate, int num_levels, bool do
 	// Set up the camera_parameters to default
 	raspicamcontrol_set_defaults(&CameraParameters);
 
-	CameraParameters.awbMode = awbmode;
+	CameraParameters.awbMode = MMAL_PARAM_AWBMODE_T(awbmode);
 	CameraParameters.hflip = fliph;
 	CameraParameters.vflip = flipv;
 

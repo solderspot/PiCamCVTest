@@ -60,7 +60,7 @@ private:
 	MMAL_CONNECTION_T*			VidToSplitConn;
 	CCameraOutput*				Outputs[4];
 
-	friend CCamera* StartCamera(int width, int height, int framerate, int num_levels, bool do_argb_conversion);
+	friend CCamera* StartCamera(int width, int height, int framerate, int num_levels, bool do_argb_conversion, int awbmode, int flipv, int fliph);
 	friend void StopCamera();
 };
 
