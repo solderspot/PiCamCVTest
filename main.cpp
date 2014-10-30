@@ -294,7 +294,7 @@ void usage( const char *name )
 	printf("    -r               :  don't process input\n");
 	printf("    -H <min>-<max>   :  hue range (0..360) - defailt %d..%d\n", DEFAULT_HUE_MIN, DEFAULT_HUE_MAX);
 	printf("    -S <min>-<max>   :  saturation range (0..255) - defailt %d..%d\n", DEFAULT_SAT_MIN, DEFAULT_SAT_MAX);
-	printf("    -V <min>-<max>   :  calue range (0..255) - defailt %d..%d\n", DEFAULT_VAL_MIN, DEFAULT_VAL_MAX);
+	printf("    -V <min>-<max>   :  value range (0..255) - defailt %d..%d\n", DEFAULT_VAL_MIN, DEFAULT_VAL_MAX);
 	printf("\n  example: %s -h 10..50 -s 50..255 -v 100..200\n", name);
 }
 
