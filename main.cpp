@@ -286,7 +286,7 @@ bool parse_int( int argc, const char **argv, const char *arg, int *i, int *val_p
 void usage( const char *name )
 {
 	printf("Usage: %s [options]\n", name );
-	printf("  Where:\n");
+	printf("  Where options are:\n");
 	printf("    -fh              :  flip image horizontally\n");
 	printf("    -fv              :  flip image vertically\n");
 	printf("    -w <pixels>      :  capture image width - defailt %d\n", DEFAULT_WIDTH);
