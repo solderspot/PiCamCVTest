@@ -244,12 +244,12 @@ bool GfxProgram::Create(GfxShader* vertex_shader, GfxShader* fragment_shader)
 	glAttachShader(Id, FragmentShader->GetId());
 	glLinkProgram(Id);
 	check();
-	printf("Created program id %d from vs %d and fs %d\n", GetId(), VertexShader->GetId(), FragmentShader->GetId());
+	//printf("Created program id %d from vs %d and fs %d\n", GetId(), VertexShader->GetId(), FragmentShader->GetId());
 
 	// Prints the information log for a program object
-	char log[1024];
-	glGetProgramInfoLog(Id,sizeof log,NULL,log);
-	printf("%d:program:\n%s\n", Id, log);
+	//char log[1024];
+	//glGetProgramInfoLog(Id,sizeof log,NULL,log);
+	//printf("%d:program:\n%s\n", Id, log);
 
 	return true;	
 }
