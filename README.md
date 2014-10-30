@@ -76,7 +76,7 @@ Command line options:
           -r               :  don't process input
           -H <min>-<max>   :  hue range (0..360) - defailt 0..60
           -S <min>-<max>   :  saturation range (0..255) - defailt 100..255
-          -V <min>-<max>   :  calue range (0..255) - defailt 100..255
+          -V <min>-<max>   :  value range (0..255) - defailt 100..255
      example: ./PiCamCVTest -H 10..50 -S 50..255 -V 100..200
 
 
