@@ -82,7 +82,7 @@ int main(int argc, const char **argv)
 		const void* frame_data; int frame_sz;
 		if(cam->BeginReadFrame(0,frame_data,frame_sz))
 		{
-			frame = cv::Mat(cap_width, cap_height, CV_8UC4, (void*)frame_data);
+			frame = cv::Mat(cap_height, cap_width, CV_8UC4, (void*)frame_data);
 
 			if (do_thresholding)
 			{
@@ -187,7 +187,7 @@ bool parse_args( int argc, const char **argv)
 				switch (*arg++)
 				{
 					case 'v': flipv = 1; break;
-					case 'h': flipv = 1; break;
+					case 'h': fliph = 1; break;
 					default: return false;
 				}
 				break; 
